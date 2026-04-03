@@ -2,6 +2,7 @@
 
 ## 🔗 Live Demo
 
+https://shoplist-virid.vercel.app/
 
 ## 📌 Project Overview
 
@@ -14,28 +15,28 @@ The goal of this project was to practice working with APIs, component-based arch
 
 ## 🚀 Features
 
-* Fetch and display products from an API
-* Responsive product grid layout
-* Search functionality (filter products by title)
-* Category-based filtering (beauty, fragrances, furniture, groceries)
-* Loading and error handling states
-* Clean and minimal UI using Tailwind CSS
+- Fetch and display products from an API
+- Responsive product grid layout
+- Search functionality (filter products by title)
+- Category-based filtering (beauty, fragrances, furniture, groceries)
+- Loading and error handling states
+- Clean and minimal UI using Tailwind CSS
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **React (Vite)** – Frontend framework for building UI
-* **Tailwind CSS** – Styling and responsive design
-* **JavaScript (ES6+)** – Logic and functionality
-* **Fetch API** – For making API requests
+- **React (Vite)** – Frontend framework for building UI
+- **Tailwind CSS** – Styling and responsive design
+- **JavaScript (ES6+)** – Logic and functionality
+- **Fetch API** – For making API requests
 
 ---
 
 ## 🌐 API Used
 
-* DummyJSON API
-* Endpoint: `https://dummyjson.com/products`
+- DummyJSON API
+- Endpoint: `https://dummyjson.com/products`
 
 This API provides product data including title, price, rating, category, and images.
 
@@ -46,7 +47,7 @@ This API provides product data including title, price, rating, category, and ima
 1. Clone the repository:
 
 ```bash
-git clone <your-repo-link>
+git clone https://github.com/shauryasync/shoplist
 ```
 
 2. Navigate to the project folder:
@@ -81,11 +82,11 @@ http://localhost:5173
 
 The application is divided into reusable components:
 
-* `ProductCard` – displays individual product
-* `ProductList` – renders product grid
-* `SearchBar` – handles search input
-* `CategoryFilter` – handles filtering
-* `Home` – manages main logic and state
+- `ProductCard` – displays individual product
+- `ProductList` – renders product grid
+- `SearchBar` – handles search input
+- `CategoryFilter` – handles filtering
+- `Home` – manages main logic and state
 
 This makes the code easier to maintain and scale.
 
@@ -95,10 +96,10 @@ This makes the code easier to maintain and scale.
 
 React hooks were used for managing state:
 
-* `products` → currently displayed products
-* `allProducts` → original data for filtering
-* `loading` → handles loading state
-* `error` → handles error state
+- `products` → currently displayed products
+- `allProducts` → original data for filtering
+- `loading` → handles loading state
+- `error` → handles error state
 
 Local state was sufficient since the app is small and does not require global state management.
 
@@ -110,9 +111,9 @@ Filtering (search and category) is done on the client side instead of making mul
 
 Reason:
 
-* Faster response
-* Simpler logic
-* Better user experience for small datasets
+- Faster response
+- Simpler logic
+- Better user experience for small datasets
 
 ---
 
@@ -120,21 +121,18 @@ Reason:
 
 Tailwind CSS grid system is used to make the layout responsive across:
 
-* Mobile
-* Tablet
-* Desktop
+- Mobile
+- Tablet
+- Desktop
 
 ---
 
 ## 🎯 Learning Outcomes
 
-* Working with REST APIs in React
-* Managing state and side effects using hooks
-* Building reusable components
-* Implementing responsive UI using Tailwind
-* Handling real-world features like search and filtering
+- Working with REST APIs in React
+- Managing state and side effects using hooks
+- Building reusable components
+- Implementing responsive UI using Tailwind
+- Handling real-world features like search and filtering
 
 ---
-
-
-

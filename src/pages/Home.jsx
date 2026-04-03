@@ -18,8 +18,8 @@ function Home() {
     setLoading(true);
     try {
       const data = await getProducts();
-      setProducts(data); // shown initially
-      setAllProducts(data); // stored for filtering
+      setProducts(data);
+      setAllProducts(data);
     } catch (err) {
       setError("Something went wrong");
     } finally {
@@ -27,7 +27,6 @@ function Home() {
     }
   };
 
-  // 🔍 Search (local filter)
   const handleSearch = (query) => {
     const filtered = allProducts.filter((item) =>
       item.title.toLowerCase().includes(query.toLowerCase()),
@@ -35,7 +34,6 @@ function Home() {
     setProducts(filtered);
   };
 
-  // 🏷️ Category (local filter — simple & safe)
   const handleCategory = (category) => {
     if (category === "all") {
       setProducts(allProducts);
@@ -51,7 +49,7 @@ function Home() {
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
   return (
-    <div className="max-w-6xl mx-auto p-4">
+    <div className="max-w-6xl mx-auto px-4 py-6">
       <SearchBar onSearch={handleSearch} />
       <CategoryFilter onSelect={handleCategory} />
 

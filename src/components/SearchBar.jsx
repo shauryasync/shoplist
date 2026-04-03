@@ -3,7 +3,7 @@ function SearchBar({ onSearch }) {
     <input
       type="text"
       placeholder="Search products..."
-      className="w-full p-2 border rounded mb-4"
+      className="w-full p-3 border rounded-lg mb-4 outline-none focus:ring-2 focus:ring-blue-500"
       onChange={(e) => onSearch(e.target.value)}
     />
   );

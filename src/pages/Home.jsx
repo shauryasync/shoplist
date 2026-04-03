@@ -1,37 +1,71 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "../services/fakestoreapi";
+import { getProducts } from "../services/api";
+import ProductCard from "../components/ProductCard";
+import SearchBar from "../components/SearchBar";
+import CategoryFilter from "../components/categoryFilter";
 
 function Home() {
   const [products, setProducts] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const data = await getProducts();
-        setProducts(data);
-      } catch (err) {
-        setError("Error Occurred");
-      }
-      setLoading(false);
-    };
     fetchData();
   }, []);
+
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const data = await getProducts();
+      setProducts(data); // shown initially
+      setAllProducts(data); // stored for filtering
+    } catch (err) {
+      setError("Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // 🔍 Search (local filter)
+  const handleSearch = (query) => {
+    const filtered = allProducts.filter((item) =>
+      item.title.toLowerCase().includes(query.toLowerCase()),
+    );
+    setProducts(filtered);
+  };
+
+  // 🏷️ Category (local filter — simple & safe)
+  const handleCategory = (category) => {
+    if (category === "all") {
+      setProducts(allProducts);
+      return;
+    }
+
+    const filtered = allProducts.filter((item) => item.category === category);
+
+    setProducts(filtered);
+  };
+
+  if (loading) return <p className="text-center mt-5">Loading...</p>;
+  if (error) return <p className="text-center text-red-500">{error}</p>;
+
   return (
-    <div>
-      <h1>Products</h1>
+    <div className="max-w-6xl mx-auto p-4">
+      <SearchBar onSearch={handleSearch} />
+      <CategoryFilter onSelect={handleCategory} />
 
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-
-      {products.map((product) => (
-        <div key={product.id}>
-          <h3>{product.title}</h3>
-          <p>Rs. {product.price}</p>
-        </div>
-      ))}
+      <div
+        className="grid gap-6 
+                      grid-cols-1 
+                      sm:grid-cols-2 
+                      md:grid-cols-3 
+                      lg:grid-cols-4"
+      >
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
     </div>
   );
 }
